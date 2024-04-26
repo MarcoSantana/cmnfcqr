@@ -15,7 +15,11 @@ const users = useUsers();
     </thead>
     <tbody>
       <tr v-for="user of users" :key="user.id">
-        <td class="text-start">{{ user.name }}</td>
+        <td class="text-start">
+          <NuxtLink :to="`/users/${user.id}`">
+            {{ user.name }}
+          </NuxtLink>
+        </td>
         <td class="text-start">{{ user.certificationYear }}</td>
         <td class="text-start">{{ user.certificationExpires }}</td>
       </tr>

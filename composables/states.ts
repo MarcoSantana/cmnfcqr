@@ -3,6 +3,7 @@ interface User {
   name: string,
   certificationYear: number,
   certificationExpires: number,
+  avatarUrl: string | undefined,
 }
 
 export const useUsers = () => useState
@@ -49,3 +50,5 @@ export const useUser = (<number>id) => useState
     const user = useUsers().value.filter((u) => u.id == id)[0];
     return user;
   })
+
+
