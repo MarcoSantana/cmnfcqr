@@ -6,6 +6,17 @@ const route = useRoute();
 // Get the id from the route
 const { id } = useRoute().params;
 const user = useUser(id);
+const events = useEvents();
+
+const uE = user.events;
+const userEvents = useUserEvents(id);
+console.log('Events',events);
+
+const myEvents = user.value.events.map((userEvent) => {
+  console.log('userEvent',userEvent);
+  return events.value.filter((event) => event.id === userEvent)[0]
+})
+// Find events 
 
 </script>
 
@@ -19,16 +30,39 @@ const user = useUser(id);
           </p>
           <h2 class="text-xl font-bold text-gray-800">
             {{ user.name }}
-          </h2>
-          <p class="text-gray-600 mb-4">
+          <small class="text-gray-600 mb-4">
             ID: {{ user.id }}
+          </small>
+          </h2>
+          <p class="text-gray-600">
+            Año de Certificación: {{ user.certificationYear }}
           </p>
           <p class="text-gray-600">
-            Certification Year: {{ user.certificationYear }}
+            Vigencia de Certificación: {{ user.certificationExpires }}
           </p>
-          <p class="text-gray-600">
-            Certification Expires: {{ user.certificationExpires }}
-          </p>
+          <!-- Table of events -->
+          <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead>
+              <tr>
+                <th class="py-3 px-6">Nombre del Evento</th>
+                <th class="py-3 px-6">Fecha</th>
+                <th class="py-3 px-6">Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="event of myEvents" :key="event.id">
+                <td class="py-3 px-6">
+                  {{ event.name }}
+                </td>
+                <td class="py-3 px-6">
+                  {{ event.date }}
+                </td>
+                <td class="py-3 px-6">
+                  {{ event.certificationPoints }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
           
         </div>
       </div>
