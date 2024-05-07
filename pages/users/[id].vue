@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: "landing",
-})
+});
 const route = useRoute();
 // Get the id from the route
 const { id } = useRoute().params;
@@ -10,19 +10,18 @@ const events = useEvents();
 
 const uE = user.events;
 const userEvents = useUserEvents(id);
-console.log('Events',events);
+console.log("Events", events);
 
 const myEvents = user.value.events.map((userEvent) => {
-  console.log('userEvent',userEvent);
-  return events.value.filter((event) => event.id === userEvent)[0]
-})
-// Find events 
-
+  return events.value.filter((event) => event.id === userEvent)[0];
+});
 </script>
 
 <template>
   <div class="flex justify-center items-center h-screen container">
-    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden w-full max-w-md">
+    <div
+      class="bg-gray-100 rounded-lg shadow-md overflow-hidden w-full max-w-md"
+    >
       <div class="backdrop-blur-md bg-opacity-80 backdrop-filter">
         <div class="p-6">
           <p>
@@ -30,9 +29,7 @@ const myEvents = user.value.events.map((userEvent) => {
           </p>
           <h2 class="text-xl font-bold text-gray-800">
             {{ user.name }}
-          <small class="text-gray-600 mb-4">
-            ID: {{ user.id }}
-          </small>
+            <small class="text-gray-600 mb-4"> ID: {{ user.id }} </small>
           </h2>
           <p class="text-gray-600">
             Año de Certificación: {{ user.certificationYear }}
@@ -41,7 +38,9 @@ const myEvents = user.value.events.map((userEvent) => {
             Vigencia de Certificación: {{ user.certificationExpires }}
           </p>
           <!-- Table of events -->
-          <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <table
+            class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
             <thead>
               <tr>
                 <th class="py-3 px-6">Nombre del Evento</th>
@@ -63,13 +62,11 @@ const myEvents = user.value.events.map((userEvent) => {
               </tr>
             </tbody>
           </table>
-          
         </div>
       </div>
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .container {

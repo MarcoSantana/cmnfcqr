@@ -65,7 +65,7 @@ export const useUser = (<number>id) => useState
   <User>('user', () => {
     const user = useUsers().value.filter((u) => u.id == id)[0];
     return user;
-  })
+  });
 
 export const useUserEvents = (<number>id) => useState
   <MyEvent[]>('userEvents', () => {
