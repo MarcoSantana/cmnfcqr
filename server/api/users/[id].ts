@@ -1,3 +1,4 @@
+// server/api/users/[id].ts
 import QRCode from 'qrcode';
 export default defineEventHandler(async (event) => {
 
